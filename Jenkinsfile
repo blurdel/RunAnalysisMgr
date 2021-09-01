@@ -18,12 +18,15 @@ pipeline {
             steps {
                 echo 'Stage: XXX'
                 sh '''
-                echo "DX20201" > currentFile
+                echo "DX2021" > currentFile
                 idtag=$(cat currentFile)
                 echo "idtag=${idtag}"
                 '''
+                def proc = 'cat currentFile'.execute()
+                println proc.text
                 
-                build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
+                //build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
+                
             }
         }
         
