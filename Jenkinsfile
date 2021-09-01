@@ -18,17 +18,15 @@ pipeline {
             steps {
                 echo 'Stage: XXX'
                 sh '''
-                echo "DX2021" > currentFile
+                echo "DX20210101" > currentFile
                 idtag=$(cat currentFile)
                 echo "idtag=${idtag}"
                 '''
                 script {
                     def idtag = sh(script: "cat currentFile", returnStdout: true).trim()
                     echo "idtag: ${idtag}"
+                    build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
                 }
-                
-                //build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
-                
             }
         }
         
