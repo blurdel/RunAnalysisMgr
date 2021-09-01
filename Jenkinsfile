@@ -24,7 +24,7 @@ pipeline {
                 '''
                 script {
                     def idtag = sh(script: "cat currentFile", returnStdout: true).trim()
-                    println idtag.text
+                    echo "idtag: ${idtag}"
                 }
                 
                 //build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
