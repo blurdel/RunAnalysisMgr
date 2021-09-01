@@ -1,6 +1,3 @@
-import java.text.SimpleDateFormat
-def idtag // dataset/analsys id
-
 pipeline {
     agent any
 
@@ -20,8 +17,13 @@ pipeline {
         stage('XXX') {
             steps {
                 echo 'Stage: XXX'
-                def local_idtag="DX20201"
-                build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${local_idtag}")], wait: true)
+                sh '''
+                echo "DX20201" > currentFile
+                idtag=$(cat currentFile)
+                echo "idtag=${idtag}"
+                '''
+                
+                build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
             }
         }
         
