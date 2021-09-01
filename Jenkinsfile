@@ -20,8 +20,8 @@ pipeline {
         stage('XXX') {
             steps {
                 echo 'Stage: XXX'
-                def idtag="DX20201"
-                build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
+                def local_idtag="DX20201"
+                build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${local_idtag}")], wait: true)
             }
         }
         
