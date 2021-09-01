@@ -22,8 +22,10 @@ pipeline {
                 idtag=$(cat currentFile)
                 echo "idtag=${idtag}"
                 '''
-                def proc = 'cat currentFile'.execute()
-                println proc.text
+                script {
+                    def proc = 'cat currentFile'.execute()
+                    println proc.text
+                }
                 
                 //build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
                 
