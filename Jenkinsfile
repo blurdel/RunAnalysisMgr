@@ -25,7 +25,7 @@ pipeline {
                 script {
                     def idtag = sh(script: "cat currentFile", returnStdout: true).trim()
                     echo "idtag: ${idtag}"
-                    build(job: '/zAnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
+                    build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
                 }
             }
         }
